@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IProduct } from "../models/models";
 import { useAppSelector } from "../hooks/redux";
 import { useAction } from "../hooks/actions";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProductCard = ({ product }: { product: IProduct }) => {
   const { toggleFavourite } = useAction();
@@ -34,6 +35,19 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         }`}
         onClick={toggleToFavourite}
       ></button>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
