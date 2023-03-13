@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const [dropdown, setDropdown] = useState(false);
+  const toggleDropdown = () => {
+    setDropdown(!dropdown);
+  };
   return (
     <nav className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -11,6 +16,7 @@ const Navbar = () => {
               className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded="false"
+              onClick={toggleDropdown}
             >
               <span className="sr-only">Open main menu</span>
               <svg
@@ -75,6 +81,25 @@ const Navbar = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className={`sm:hidden ${!dropdown && "hidden"}`} id="mobile-menu">
+        <div className="space-y-1 px-2 pt-2 pb-3">
+          <NavLink
+            to="/"
+            className="nav-link text-white block rounded-md px-3 py-2 text-base font-medium"
+            aria-current="page"
+          >
+            Главная
+          </NavLink>
+          <NavLink
+            to="/favourites"
+            className="nav-link text-white block rounded-md px-3 py-2 text-base font-medium"
+            aria-current="page"
+          >
+            Избранное
+          </NavLink>
         </div>
       </div>
     </nav>
