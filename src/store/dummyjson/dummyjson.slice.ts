@@ -36,7 +36,7 @@ export const dummyjsonSlice = createSlice({
         state.favourites = state.favourites.filter(f => f !== action.payload);
         localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites))
 
-        toast.info('Товар удален из избранного', {
+        toast.error('Товар удален из избранного', {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
